@@ -1,0 +1,189 @@
+*neovim-function-lit.txt*               Nvim
+
+==============================================================================
+api.txt
+api-global
+nvim__get_runtime() runtimeディレクトリからファイルを検索する
+nvim__id() 渡されたオブジェクトを返す
+nvim__id_rray() 渡された配列を返す
+nvim__id_dictionary() 渡された辞書を返す
+nvim__id_float() 渡された少数を返す
+nvim__inpect_cell()
+nvim__stats() 内部状態を得る
+nvim_call_atomic() 
+nvim_chan_send()
+nvim_create_buf() 空のバッファを作成する
+nvim_del_current_line() 現在行を削除する
+nvim_del_keymap() マッピングを削除する
+nvim_del_mark() マークを削除する
+nvim_del_var() グローバル変数を削除する
+nvim_echo()
+nvim_err_write()
+nvim_err_writeln()
+nvim_eval_statusline()
+nvim_exec_lua()
+nvim_feedkeys()
+nvim_get_api_info()
+nvim_get_chan_info()
+nvim_get_color_by_name()
+nvim_get_color_map()
+nvim_get_context()
+nvim_get_current_buf()
+nvim_get_current_line()
+nvim_get_current_tabpage()
+nvim_get_current_win()
+nvim_get_hl_by_id()
+nvim_get_hl_by_name()
+nvim_get_hl_id_by_name()
+nvim_get_keymap()
+nvim_get_mark()
+nvim_get_mode()
+nvim_get_proc()
+nvim_get_proc_children()
+nvim_get_runtime_file()
+nvim_get_var()
+nvim_get_vvar()
+nvim_input()                                              *nvim_input()*
+                                                          *nvim_input_mouse()*
+nvim_list_bufs()                                            *nvim_list_bufs()*
+nvim_list_chans()                                          *nvim_list_chans()*
+nvim_list_runtime_paths()                          *nvim_list_runtime_paths()*
+nvim_list_tabpages()                                    *nvim_list_tabpages()*
+nvim_list_uis()                                              *nvim_list_uis()*
+nvim_list_wins()                                            *nvim_list_wins()*
+nvim_load_context({dict})                                *nvim_load_context()*
+nvim_notify({msg}, {log_level}, {opts})                        *nvim_notify()*
+nvim_open_term({buffer}, {opts})                            *nvim_open_term()*
+nvim_out_write({str})                                       *nvim_out_write()*
+nvim_paste({data}, {crlf}, {phase})                             *nvim_paste()*
+nvim_put({lines}, {type}, {after}, {follow})                      *nvim_put()*
+                                                    *nvim_replace_termcodes()*
+                                                *nvim_select_popupmenu_item()*
+                                                      *nvim_set_client_info()*
+nvim_set_current_buf({buffer})                        *nvim_set_current_buf()*
+nvim_set_current_dir({dir})                           *nvim_set_current_dir()*
+nvim_set_current_line({line})                        *nvim_set_current_line()*
+nvim_set_current_tabpage({tabpage})               *nvim_set_current_tabpage()*
+nvim_set_current_win({window})                        *nvim_set_current_win()*
+nvim_set_hl({ns_id}, {name}, {*val})                           *nvim_set_hl()*
+nvim_set_hl_ns({ns_id})                                     *nvim_set_hl_ns()*
+nvim_set_hl_ns_fast({ns_id})                           *nvim_set_hl_ns_fast()*
+nvim_set_keymap({mode}, {lhs}, {rhs}, {*opts})             *nvim_set_keymap()*
+nvim_set_var({name}, {value})                                 *nvim_set_var()*
+nvim_set_vvar({name}, {value})                               *nvim_set_vvar()*
+nvim_strwidth({text})                                        *nvim_strwidth()*
+nvim_subscribe({event})                                     *nvim_subscribe()*
+nvim_unsubscribe({event})                                 *nvim_unsubscribe()*
+Vimscript Functions                                            *api-vimscript*
+                                                   *nvim_call_dict_function()*
+nvim_call_function({fn}, {args})                        *nvim_call_function()*
+nvim_command({command})                                       *nvim_command()*
+nvim_eval({expr})                                                *nvim_eval()*
+nvim_exec({src}, {output})                                       *nvim_exec()*
+                                                     *nvim_parse_expression()*
+Command Functions                                                *api-command*
+                                              *nvim_buf_create_user_command()*
+                                                 *nvim_buf_del_user_command()*
+nvim_buf_get_commands({buffer}, {*opts})             *nvim_buf_get_commands()*
+nvim_cmd({*cmd}, {*opts})                                         *nvim_cmd()*
+                                                  *nvim_create_user_command()*
+nvim_del_user_command({name})                        *nvim_del_user_command()*
+nvim_get_commands({*opts})                               *nvim_get_commands()*
+nvim_parse_cmd({str}, {opts})                               *nvim_parse_cmd()*
+Options Functions                                                *api-options*
+nvim_buf_get_option({buffer}, {name})                  *nvim_buf_get_option()*
+nvim_buf_set_option({buffer}, {name}, {value})         *nvim_buf_set_option()*
+nvim_get_all_options_info()                      *nvim_get_all_options_info()*
+nvim_get_option({name})                                    *nvim_get_option()*
+nvim_get_option_info({name})                          *nvim_get_option_info()*
+nvim_get_option_value({name}, {*opts})               *nvim_get_option_value()*
+nvim_set_option({name}, {value})                           *nvim_set_option()*
+                                                     *nvim_set_option_value()*
+nvim_win_get_option({window}, {name})                  *nvim_win_get_option()*
+nvim_win_set_option({window}, {name}, {value})         *nvim_win_set_option()*
+Buffer Functions                                                  *api-buffer*
+nvim_buf_attach({buffer}, {send_buffer}, {opts})           *nvim_buf_attach()*
+nvim_buf_call({buffer}, {fun})                               *nvim_buf_call()*
+nvim_buf_del_keymap({buffer}, {mode}, {lhs})           *nvim_buf_del_keymap()*
+nvim_buf_del_mark({buffer}, {name})                      *nvim_buf_del_mark()*
+nvim_buf_del_var({buffer}, {name})                        *nvim_buf_del_var()*
+nvim_buf_delete({buffer}, {opts})                          *nvim_buf_delete()*
+nvim_buf_detach({buffer})                                  *nvim_buf_detach()*
+nvim_buf_get_changedtick({buffer})                *nvim_buf_get_changedtick()*
+nvim_buf_get_keymap({buffer}, {mode})                  *nvim_buf_get_keymap()*
+                                                        *nvim_buf_get_lines()*
+nvim_buf_get_mark({buffer}, {name})                      *nvim_buf_get_mark()*
+nvim_buf_get_name({buffer})                              *nvim_buf_get_name()*
+nvim_buf_get_offset({buffer}, {index})                 *nvim_buf_get_offset()*
+                                                         *nvim_buf_get_text()*
+nvim_buf_get_var({buffer}, {name})                        *nvim_buf_get_var()*
+nvim_buf_is_loaded({buffer})                            *nvim_buf_is_loaded()*
+nvim_buf_is_valid({buffer})                              *nvim_buf_is_valid()*
+nvim_buf_line_count({buffer})                          *nvim_buf_line_count()*
+                                                       *nvim_buf_set_keymap()*
+                                                        *nvim_buf_set_lines()*
+                                                         *nvim_buf_set_mark()*
+nvim_buf_set_name({buffer}, {name})                      *nvim_buf_set_name()*
+                                                         *nvim_buf_set_text()*
+nvim_buf_set_var({buffer}, {name}, {value})               *nvim_buf_set_var()*
+Extmark Functions                                                *api-extmark*
+                                                    *nvim_buf_add_highlight()*
+                                                  *nvim_buf_clear_namespace()*
+nvim_buf_del_extmark({buffer}, {ns_id}, {id})         *nvim_buf_del_extmark()*
+                                                *nvim_buf_get_extmark_by_id()*
+                                                     *nvim_buf_get_extmarks()*
+                                                      *nvim_buf_set_extmark()*
+nvim_create_namespace({name})                        *nvim_create_namespace()*
+    Creates a new namespace or gets an existing one.               *namespace*
+nvim_get_namespaces()                                  *nvim_get_namespaces()*
+                                              *nvim_set_decoration_provider()*
+Window Functions                                                  *api-window*
+nvim_win_call({window}, {fun})                               *nvim_win_call()*
+nvim_win_close({window}, {force})                           *nvim_win_close()*
+nvim_win_del_var({window}, {name})                        *nvim_win_del_var()*
+nvim_win_get_buf({window})                                *nvim_win_get_buf()*
+nvim_win_get_cursor({window})                          *nvim_win_get_cursor()*
+nvim_win_get_height({window})                          *nvim_win_get_height()*
+nvim_win_get_number({window})                          *nvim_win_get_number()*
+nvim_win_get_position({window})                      *nvim_win_get_position()*
+nvim_win_get_tabpage({window})                        *nvim_win_get_tabpage()*
+nvim_win_get_var({window}, {name})                        *nvim_win_get_var()*
+nvim_win_get_width({window})                            *nvim_win_get_width()*
+nvim_win_hide({window})                                      *nvim_win_hide()*
+nvim_win_is_valid({window})                              *nvim_win_is_valid()*
+nvim_win_set_buf({window}, {buffer})                      *nvim_win_set_buf()*
+nvim_win_set_cursor({window}, {pos})                   *nvim_win_set_cursor()*
+nvim_win_set_height({window}, {height})                *nvim_win_set_height()*
+nvim_win_set_hl_ns({window}, {ns_id})                   *nvim_win_set_hl_ns()*
+nvim_win_set_var({window}, {name}, {value})               *nvim_win_set_var()*
+nvim_win_set_width({window}, {width})                   *nvim_win_set_width()*
+Win_Config Functions                                          *api-win_config*
+nvim_open_win({buffer}, {enter}, {*config})                  *nvim_open_win()*
+nvim_win_get_config({window})                          *nvim_win_get_config()*
+nvim_win_set_config({window}, {*config})               *nvim_win_set_config()*
+Tabpage Functions                                                *api-tabpage*
+nvim_tabpage_del_var({tabpage}, {name})               *nvim_tabpage_del_var()*
+nvim_tabpage_get_number({tabpage})                 *nvim_tabpage_get_number()*
+nvim_tabpage_get_var({tabpage}, {name})               *nvim_tabpage_get_var()*
+nvim_tabpage_get_win({tabpage})                       *nvim_tabpage_get_win()*
+nvim_tabpage_is_valid({tabpage})                     *nvim_tabpage_is_valid()*
+nvim_tabpage_list_wins({tabpage})                   *nvim_tabpage_list_wins()*
+                                                      *nvim_tabpage_set_var()*
+Autocmd Functions                                                *api-autocmd*
+nvim_clear_autocmds({*opts})                           *nvim_clear_autocmds()*
+nvim_create_augroup({name}, {*opts})                   *nvim_create_augroup()*
+nvim_create_autocmd({event}, {*opts})                  *nvim_create_autocmd()*
+nvim_del_augroup_by_id({id})                        *nvim_del_augroup_by_id()*
+nvim_del_augroup_by_name({name})                  *nvim_del_augroup_by_name()*
+nvim_del_autocmd({id})                                    *nvim_del_autocmd()*
+nvim_exec_autocmds({event}, {*opts})                    *nvim_exec_autocmds()*
+nvim_get_autocmds({*opts})                               *nvim_get_autocmds()*
+UI Functions                                                          *api-ui*
+nvim_ui_attach({width}, {height}, {options})                *nvim_ui_attach()*
+nvim_ui_detach()                                            *nvim_ui_detach()*
+                                                    *nvim_ui_pum_set_bounds()*
+nvim_ui_pum_set_height({height})                    *nvim_ui_pum_set_height()*
+nvim_ui_set_focus({gained})                              *nvim_ui_set_focus()*
+nvim_ui_set_option({name}, {value})                     *nvim_ui_set_option()*
+nvim_ui_try_resize({width}, {height})                   *nvim_ui_try_resize()*
+                                                   *nvim_ui_try_resize_grid()*
